@@ -11,6 +11,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     public string enemyTag = "Enemy";
     public Transform partToRotate;
+	[Range(1f, 100f)]
 	public float rotationSpeed = 10f;
 
 	// Start is called before the first frame update
@@ -58,6 +59,7 @@ public class Turret : MonoBehaviour
             return;
         } else
 		{
+            //Target lock on method
             Vector3 dir = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotationActual = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
