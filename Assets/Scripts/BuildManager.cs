@@ -17,20 +17,21 @@ public class BuildManager : MonoBehaviour
 		instance = this;
 	}
 
-
+	
 	private GameObject turretToBuild;
+	[Header("Turret Master List")]
 	public GameObject standardTurretPrefab;
+	public GameObject rocketLauncherPrefab;
 
-	private void Start()
-	{
-		turretToBuild = standardTurretPrefab;
-	}
 
 	public GameObject GetTurretToBuild()
 	{
 		return turretToBuild;
 	}
 
-
+	public void SetTurretToBuild(GameObject turret)
+	{
+		turretToBuild = turret;
+	}
 
 }
