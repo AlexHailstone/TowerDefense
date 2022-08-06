@@ -14,8 +14,12 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
-
+	[Header("Node Settings")]
 	public Color hoverColor;
+	public Color notEnoughMoneyColor;
+
+
+
 	private Renderer rend;
 	private Color startColor;
 
@@ -63,7 +67,7 @@ public class Node : MonoBehaviour
 
 
 
-	private void OnMouseEnter()
+	void OnMouseEnter()
 	{
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
@@ -74,7 +78,9 @@ public class Node : MonoBehaviour
 			return;
 		}
 
-		rend.material.color = hoverColor;
+
+		rend.material.color = !buildManager.HasMoney ? notEnoughMoneyColor : hoverColor;
+		
 	}
 
 

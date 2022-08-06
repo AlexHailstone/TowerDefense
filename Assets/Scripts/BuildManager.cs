@@ -26,6 +26,11 @@ public class BuildManager : MonoBehaviour
 	//this is called a property, the goal is a single-line function that is setting a variable CanBuild.
 	//if turretToBuild is true, then CanBuild is true, but this can only be set from the functioncheck
 	public bool CanBuild { get { return turretToBuild != null;} }
+	// Returns the variable HasMoney based on whether we have enough money currently or not
+	// compared to the turret we're trying to build
+	public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
+
+
 
 	public void SelectTurretToBuild(TurretBlueprint turret)
 	{
