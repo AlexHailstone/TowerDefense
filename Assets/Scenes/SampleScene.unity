@@ -1709,7 +1709,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 342131421}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: purchaseStandardTurret
+        m_MethodName: SelectStandardTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2298,7 +2298,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 342131421}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: purchaseEMPTurret
+        m_MethodName: SelectRocketLauncher
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2911,6 +2911,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f001ebab1c6086b498891bc3e62b9b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standardTurret:
+    prefab: {fileID: 6772892031464510139, guid: c0a8424ec25bbd243b4c3c5d165b2ac8, type: 3}
+    cost: 100
+  rocketLauncher:
+    prefab: {fileID: 8840769477819749737, guid: 0d3d3b76872207240b7199570acdb23a, type: 3}
+    cost: 250
 --- !u!1001 &346572631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7040,6 +7046,7 @@ GameObject:
   - component: {fileID: 901728231}
   - component: {fileID: 901728232}
   - component: {fileID: 901728233}
+  - component: {fileID: 901728234}
   m_Layer: 0
   m_Name: SolexTheDM
   m_TagString: Untagged
@@ -7075,7 +7082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenWaves: 10
-  pauseBetweenWaves: 1
+  pauseBetweenWaves: 0.25
   waveCountdownText: {fileID: 964846982}
   waveIndex: 0
   enemyPrefab: {fileID: 797840578432443413, guid: 5f5871cb463c5244697d1b2db5e898fc, type: 3}
@@ -7093,7 +7100,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 6772892031464510139, guid: c0a8424ec25bbd243b4c3c5d165b2ac8, type: 3}
-  EMPTurretPrefab: {fileID: 8840769477819749737, guid: 0d3d3b76872207240b7199570acdb23a, type: 3}
+  rocketLauncherPrefab: {fileID: 8840769477819749737, guid: 0d3d3b76872207240b7199570acdb23a, type: 3}
+--- !u!114 &901728234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901728229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce675e2d735a1d347b0af1ddf5d300e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 400
 --- !u!1001 &930888883
 PrefabInstance:
   m_ObjectHideFlags: 0

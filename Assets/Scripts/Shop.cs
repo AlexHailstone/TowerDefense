@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+	public TurretBlueprint standardTurret;
+	public TurretBlueprint rocketLauncher;
 
 	BuildManager buildManager;
 
@@ -14,20 +16,20 @@ public class Shop : MonoBehaviour
 
 
 	//public because we're going to reference this in the other BuildManager.cs script
-	public void purchaseStandardTurret ()
+	public void SelectStandardTurret ()
 	{
 
-		Debug.Log("Standard Turret Purchaged");
-		buildManager.SetTurretToBuild(buildManager.standardTurretPrefab);
+		Debug.Log("Standard Turret Selected");
+		buildManager.SelectTurretToBuild(standardTurret);
 
 	}
 
 
-	public void purchaseEMPTurret()
+	public void SelectRocketLauncher()
 	{
 
-		Debug.Log("EMP Turret Purchaged");
-		buildManager.SetTurretToBuild(buildManager.rocketLauncherPrefab);
+		Debug.Log("Rocket Launcher Selected");
+		buildManager.SelectTurretToBuild(rocketLauncher);
 	}
 
 

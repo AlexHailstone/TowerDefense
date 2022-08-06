@@ -18,7 +18,9 @@ public class Node : MonoBehaviour
 	public Color hoverColor;
 	private Renderer rend;
 	private Color startColor;
-	private GameObject turret;
+
+	[Header("Optional")]
+	public GameObject turret;
 
 	BuildManager buildManager;
 
@@ -38,7 +40,7 @@ public class Node : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
 
-		if (buildManager.GetTurretToBuild() == null)
+		if (!buildManager.CanBuild)
 		{
 			return;
 		}
@@ -50,10 +52,13 @@ public class Node : MonoBehaviour
 			return;
 		}
 
-		//build a turret
-		//build manager -> after pressing on the UI, you're able to press the node to instantiate it there.
-		GameObject turretToBuild = buildManager.GetTurretToBuild();
-		turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+		buildManager.BuildTurretOn(this);
+		Debug.Log("Turret Purchased and Built:");
+	}
+
+	public Vector3 GetBuildPosition()
+	{
+		return transform.position + positionOffset;
 	}
 
 
@@ -64,7 +69,7 @@ public class Node : MonoBehaviour
 			return;
 
 
-		if (buildManager.GetTurretToBuild() == null)
+		if (!buildManager.CanBuild)
 		{
 			return;
 		}
