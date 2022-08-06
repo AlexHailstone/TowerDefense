@@ -19,9 +19,13 @@ public class BuildManager : MonoBehaviour
 
 	
 	private TurretBlueprint turretToBuild;
+
+	public GameObject buildEffect;
 	[Header("Turret Master List")]
 	public GameObject standardTurretPrefab;
 	public GameObject rocketLauncherPrefab;
+
+
 
 	//this is called a property, the goal is a single-line function that is setting a variable CanBuild.
 	//if turretToBuild is true, then CanBuild is true, but this can only be set from the functioncheck
@@ -48,6 +52,8 @@ public class BuildManager : MonoBehaviour
 			GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
 			node.turret = turret;
 			Debug.Log("Turret Built! Currenty left: " + PlayerStats.Money);
+			GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
+			Destroy(effect, 5f);
 			
 		} else
 		{
