@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 25f;
     public GameObject impactEffect;
+	public int damage = 50;
 
 	public float explosionRadius = 0f;
 	//transferred the target information from the turret tracking script
@@ -79,6 +80,11 @@ public class Bullet : MonoBehaviour
 	}
 	void Damage(Transform enemy)
 	{
-		Destroy(enemy.gameObject);
+		Enemy e = enemy.GetComponent<Enemy>();
+		if (e != null)
+		{
+			e.TakeDamage(damage);
+		}
+		
 	}
 }

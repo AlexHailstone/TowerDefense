@@ -111,3 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  health: 100
+  valueOfEnemey: 50
+  onDeathAnimation: {fileID: 5458917820840018404, guid: f35d04b715ca3e0409d5094ef2588553, type: 3}

@@ -6,20 +6,29 @@ public class Turret : MonoBehaviour
 {
 
     [Header("General")]
-    //only using pulic to make sure that the targetting system is working (grabbing the closest)
-    public Transform target;
-    public string enemyTag = "Enemy";
-    public Transform partToRotate;
-	
-	
-
-    [Header("Turret Settings")]
-    public float rotationSpeed = 10f;
     public float range = 15f;
+    public float rotationSpeed = 10f;
+    public Transform partToRotate;
+
+
+    [Header("Use Bullets (default)")]
     public float fireRate = 1f;
     private float fireCountdown = 0f;
     public GameObject bulletPrefab;
     public Transform firePoint;
+
+
+    [Header("Use Laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
+    public ParticleSystem laserImpactEffect;
+
+
+	[Header("(Optional)")]
+    public Transform target;
+    public string enemyTag = "Enemy";
+   
+  
 
 
 
@@ -65,30 +74,68 @@ public class Turret : MonoBehaviour
     {
         if (target == null)
         {
+            if (useLaser)
+			{
+                if (lineRenderer.enabled)
+				{
+                    lineRenderer.enabled = false;
+                    laserImpactEffect.Stop();
+                }
+			}
+
+
             return;
         } else
 		{
-            //Target lock on method
-            Vector3 dir = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotationActual = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(0f, rotationActual.y, 0f);
+            LockOnTarget();
 
-            if (fireCountdown <= 0f)
-            {
-                Shoot();
-                fireCountdown = 1f / fireRate;
+            if (useLaser)
+			{
+                Laser();
+			} else
+			{
+                if (fireCountdown <= 0f)
+                {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
             }
-
-            fireCountdown -= Time.deltaTime; //counts down every 1 second
-
-
-
+          fireCountdown -= Time.deltaTime; //counts down every 1 second
         }
    
 
 
         
+    }
+
+
+	private void Laser()
+	{
+        if (!lineRenderer.enabled)
+        {
+         
+            
+            lineRenderer.enabled = true;
+            laserImpactEffect.Play();
+        }
+
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
+
+        Vector3 dir = firePoint.position - target.position;
+
+        laserImpactEffect.transform.position = target.position + dir.normalized;
+
+        laserImpactEffect.transform.rotation = Quaternion.LookRotation(dir);
+    }
+
+	void LockOnTarget()
+	{
+        //Target lock on method
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotationActual = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotationActual.y, 0f);
     }
 
     void Shoot()

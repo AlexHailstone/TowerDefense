@@ -24,6 +24,7 @@ public class BuildManager : MonoBehaviour
 	[Header("Turret Master List")]
 	public GameObject standardTurretPrefab;
 	public GameObject rocketLauncherPrefab;
+	public GameObject laserTurretPrefab;
 
 
 
