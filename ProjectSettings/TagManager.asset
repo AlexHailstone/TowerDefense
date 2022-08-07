@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Path
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pathway
   - Water
   - UI
   - 
