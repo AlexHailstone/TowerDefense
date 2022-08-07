@@ -16,7 +16,7 @@ public class wavecontroller : MonoBehaviour
 
 
 
-    public int waveIndex = 0;
+    private int waveIndex = 0;
     public Transform enemyPrefab;
     public Transform spawnPoint;
     
@@ -44,6 +44,7 @@ public class wavecontroller : MonoBehaviour
 	{
 
         waveIndex++;
+        PlayerStats.rounds++;
         Debug.Log("Wave incoming!");
 
 		for (int i = 0; i < waveIndex; i++)

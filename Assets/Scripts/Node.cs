@@ -44,20 +44,21 @@ public class Node : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
 
+		
+
+
+		if (turret != null)
+		{
+			buildManager.SelectNode(this);
+			return;
+		}
+
 		if (!buildManager.CanBuild)
 		{
 			return;
 		}
 
-
-		if (turret != null)
-		{
-			Debug.Log("Can't Build here, there's already a turret.");
-			return;
-		}
-
 		buildManager.BuildTurretOn(this);
-		Debug.Log("Turret Purchased and Built:");
 	}
 
 	public Vector3 GetBuildPosition()
