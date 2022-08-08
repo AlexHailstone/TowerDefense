@@ -6,11 +6,11 @@ using TMPro;
 
 public class wavecontroller : MonoBehaviour
 {
+    public static int enemiesAlive = 0;
 
 
     public float timeBetweenWaves = 10f;
     private float countdown = 2f;
-    public float pauseBetweenWaves = 2f;
 
     public TextMeshProUGUI waveCountdownText;
 
@@ -19,16 +19,23 @@ public class wavecontroller : MonoBehaviour
     private int waveIndex = 0;
     public Transform enemyPrefab;
     public Transform spawnPoint;
-    
+
+    public Wave[] waves;
+
+
 
 
     void Update()
     {
+        if (enemiesAlive > 0)
+            return; 
+
 
         if (countdown <= 0f)
 		{
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
+            return;
            
         }
 
@@ -43,23 +50,32 @@ public class wavecontroller : MonoBehaviour
     IEnumerator SpawnWave ()
 	{
 
-        waveIndex++;
         PlayerStats.rounds++;
-        Debug.Log("Wave incoming!");
 
-		for (int i = 0; i < waveIndex; i++)
+        Wave wave = waves[waveIndex];
+
+		for (int i = 0; i < wave.count; i++)
 		{
-            SpawnEnemy();
-            yield return new WaitForSeconds(pauseBetweenWaves);
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1f / wave.rate);
 		}
 
+        waveIndex++;
+
+        if (waveIndex == waves.Length)
+		{
+            //This is reaching the max level.
+            Debug.Log("End of The Level");
+            this.enabled = false;
+		}
         
     }
         
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
 	{
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        enemiesAlive++;
 	}
 
 

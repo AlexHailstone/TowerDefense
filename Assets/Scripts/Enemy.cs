@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
 		PlayerStats.Money += valueOfEnemey;
 		Destroy(gameObject);
 		Destroy(effect, 5f);
+		wavecontroller.enemiesAlive--;
 	}
 
 	}

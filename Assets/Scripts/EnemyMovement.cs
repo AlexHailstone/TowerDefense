@@ -48,6 +48,7 @@ public class EnemyMovement : MonoBehaviour
 		Debug.Log("Take Damage!");
 		Destroy(gameObject);
 		PlayerStats.playerLives--;
+		wavecontroller.enemiesAlive--;
 	}
 
 
