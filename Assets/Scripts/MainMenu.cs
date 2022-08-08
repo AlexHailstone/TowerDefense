@@ -5,13 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-	public string levelToLoad = "MainLevel";
+	public string levelToLoad = "Level01";
+	public string levelSelector = "LevelSelect";
 	public SceneFader sceneFader;
 
 
 	public void Play()
 	{
-		sceneFader.FadeTo(levelToLoad);
+		sceneFader.FadeTo(levelSelector);
+
+	}
+
+	public void LevelSelector()
+	{
+		sceneFader.FadeTo(levelSelector);
 
 	}
 
