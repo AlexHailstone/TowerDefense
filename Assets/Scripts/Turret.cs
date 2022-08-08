@@ -130,9 +130,7 @@ public class Turret : MonoBehaviour
         lineRenderer.SetPosition(1, target.position);
 
         Vector3 dir = firePoint.position - target.position;
-
         laserImpactEffect.transform.position = target.position + dir.normalized;
-
         laserImpactEffect.transform.rotation = Quaternion.LookRotation(dir);
     }
 

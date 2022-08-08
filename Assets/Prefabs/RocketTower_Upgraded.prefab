@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 6856432750220962760}
   - component: {fileID: 6284326771496618670}
   m_Layer: 10
-  m_Name: RocketTower_0 1
+  m_Name: RocketTower_Upgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ Transform:
   m_GameObject: {fileID: 8840769477819749737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 36.03531, y: 0.5, z: 49.689568}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1987106659799394951}
@@ -508,11 +508,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8951bab713700034da8984c35ce9760e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  enemyTag: Enemy
+  range: 45
+  rotationSpeed: 50
   partToRotate: {fileID: 8659468807286002596}
-  rotationSpeed: 10
-  range: 30
-  fireRate: 0.25
+  fireRate: 0.75
   bulletPrefab: {fileID: 7870453273436182232, guid: 1314e2d5cb6e63141be7af33c8e2f03d, type: 3}
   firePoint: {fileID: 8496591956646163732}
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  laserImpactEffect: {fileID: 0}
+  damageOverTime: 30
+  slowPct: 0.5
+  target: {fileID: 0}
+  enemyTag: Enemy

@@ -19,12 +19,17 @@ public class Node : MonoBehaviour
 	public Color notEnoughMoneyColor;
 
 
-
 	private Renderer rend;
 	private Color startColor;
 
-	[Header("Optional")]
+	[HideInInspector]
 	public GameObject turret;
+	[HideInInspector]
+	public TurretBlueprint turretBlueprint;
+	[HideInInspector]
+	public bool isUpgraded = false;
+
+
 
 	BuildManager buildManager;
 
@@ -58,12 +63,76 @@ public class Node : MonoBehaviour
 			return;
 		}
 
-		buildManager.BuildTurretOn(this);
+		BuildTurret(buildManager.GetTurretToBuild());
 	}
 
 	public Vector3 GetBuildPosition()
 	{
 		return transform.position + positionOffset;
+	}
+
+	void BuildTurret(TurretBlueprint blueprint)
+	{
+		if (PlayerStats.Money >= blueprint.cost)
+		{
+
+			PlayerStats.Money -= blueprint.cost;
+			//build a turret
+			//build manager -> after pressing on the UI, you're able to press the node to instantiate it there.
+			GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+			turret = _turret;
+			turretBlueprint = blueprint;
+			Debug.Log("Turret Built!");
+			GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+			Destroy(effect, 5f);
+
+		}
+		else
+		{
+			Debug.Log("Not enough currency");
+		}
+
+	}
+
+
+	public void UpgradeTurret()
+	{
+		if (PlayerStats.Money < turretBlueprint.upgradeCost)
+		{
+			Debug.Log("Not enough money to upgrade.");
+			return;
+		} else
+		{ 
+
+			PlayerStats.Money -= turretBlueprint.upgradeCost;
+			
+			//remove the old turret
+			Destroy(turret);
+
+			//Build the new one.
+			GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+			turret = _turret;
+
+			
+			GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+			Destroy(effect, 5f);
+
+			isUpgraded = true;
+
+			Debug.Log("Turret Upgraded!");
+
+		}
+	}
+
+	public void SellTurret()
+	{
+		PlayerStats.Money += turretBlueprint.GetSellAmount();
+
+		GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+		Destroy(effect, 5f);
+
+		Destroy(turret);
+		turretBlueprint = null;
 	}
 
 
@@ -78,9 +147,14 @@ public class Node : MonoBehaviour
 		{
 			return;
 		}
-
-
-		rend.material.color = !buildManager.HasMoney ? notEnoughMoneyColor : hoverColor;
+		if (buildManager.HasMoney)
+		{
+			rend.material.color = hoverColor;
+		}
+		else
+		{
+			rend.material.color = notEnoughMoneyColor;
+		}
 		
 	}
 

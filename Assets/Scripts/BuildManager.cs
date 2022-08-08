@@ -23,6 +23,7 @@ public class BuildManager : MonoBehaviour
 	public NodeUI nodeUI;
 
 	public GameObject buildEffect;
+	public GameObject sellEffect;
 	[Header("Turret Master List")]
 	public GameObject standardTurretPrefab;
 	public GameObject rocketLauncherPrefab;
@@ -46,6 +47,12 @@ public class BuildManager : MonoBehaviour
 		DeselectNode();
 	}
 
+	public TurretBlueprint GetTurretToBuild()
+	{
+		return turretToBuild;
+	}
+
+
 	public void SelectNode(Node node)
 	{
 		if (selectedNode == node)
@@ -66,26 +73,6 @@ public class BuildManager : MonoBehaviour
 	}
 
 
-	public void BuildTurretOn(Node node)
-	{
-		if (PlayerStats.Money >= turretToBuild.cost)
-		{
 
-			PlayerStats.Money -= turretToBuild.cost;
-			//build a turret
-			//build manager -> after pressing on the UI, you're able to press the node to instantiate it there.
-			GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-			node.turret = turret;
-			Debug.Log("Turret Built! Currenty left: " + PlayerStats.Money);
-			GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-			Destroy(effect, 5f);
-			
-		} else
-		{
-			Debug.Log("Not enough currency");
-		}
-
-		
-	}
 
 }
