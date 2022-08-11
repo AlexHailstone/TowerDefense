@@ -469,9 +469,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6856432750220962760}
   - component: {fileID: 6284326771496618670}
+  - component: {fileID: 5630422203357513446}
   m_Layer: 10
   m_Name: RocketTower
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,3 +522,17 @@ MonoBehaviour:
   slowPct: 0.5
   target: {fileID: 0}
   enemyTag: Enemy
+--- !u!136 &5630422203357513446
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8840769477819749737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
