@@ -48,7 +48,10 @@ public class Node : MonoBehaviour
 	{
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
-				
+
+		
+
+
 		if (turret != null)
 		{
 			buildManager.SelectNode(this);

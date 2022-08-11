@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 6284326771496618670}
   m_Layer: 10
   m_Name: RocketTower_Upgraded
-  m_TagString: Turret
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
