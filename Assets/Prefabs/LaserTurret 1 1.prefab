@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2164792110280607537}
   - component: {fileID: 29509343332565807}
   - component: {fileID: 3947875938872306405}
+  - component: {fileID: 2945843582962789772}
   m_Layer: 0
   m_Name: LaserTurret 1 1
   m_TagString: Untagged
@@ -160,6 +161,20 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!136 &2945843582962789772
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938576852532253600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &8318718625438121877
 GameObject:
   m_ObjectHideFlags: 0
