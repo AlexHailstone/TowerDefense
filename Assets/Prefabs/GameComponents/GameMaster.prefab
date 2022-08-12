@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2676566560358691851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2676566560358691849}
+  - component: {fileID: 2676566560358691846}
+  - component: {fileID: 2676566560358691847}
+  - component: {fileID: 2676566560358691844}
+  - component: {fileID: 2676566560358691845}
+  - component: {fileID: 2676566560358691842}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2676566560358691849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676566560358691851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.733128, y: 36.604958, z: 30.95908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2676566560358691846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676566560358691851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb56d12b5f7f374596b4a3e0dcd2acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenWaves: 2
+  waveCountdownText: {fileID: 0}
+  enemyPrefab: {fileID: 797840578432443413, guid: 5f5871cb463c5244697d1b2db5e898fc, type: 3}
+  spawnPoint: {fileID: 0}
+  waves:
+  - enemy: {fileID: 2030532240238601899, guid: 5f5871cb463c5244697d1b2db5e898fc, type: 3}
+    count: 1
+    rate: 0.5
+  - enemy: {fileID: 2030532240238601899, guid: bea6b60804cc4544c9fd43a956c4ce52, type: 3}
+    count: 1
+    rate: 0.1
+--- !u!114 &2676566560358691847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676566560358691851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e587b4fde1d7e54cb27dc742f8d7782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeUI: {fileID: 0}
+  buildEffect: {fileID: 2182732768469760212, guid: da50cc3fd695f8e45be5fb49ae4022a7, type: 3}
+  sellEffect: {fileID: 2182732768469760212, guid: 0fae8900db4667543b5a003c125d8089, type: 3}
+  standardTurretPrefab: {fileID: 4208403151140297974, guid: bc6902ca0cc31554b915e273870d866b, type: 3}
+  rocketLauncherPrefab: {fileID: 8840769477819749737, guid: 0d3d3b76872207240b7199570acdb23a, type: 3}
+  laserTurretPrefab: {fileID: 7938576852532253600, guid: 89013d56014a4ab498119c79a593a35a, type: 3}
+--- !u!114 &2676566560358691844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676566560358691851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce675e2d735a1d347b0af1ddf5d300e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 6000
+  startLives: 1
+--- !u!114 &2676566560358691845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676566560358691851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105990bd539a7c244a43a99b5e542553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 0}
+--- !u!114 &2676566560358691842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676566560358691851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7cc54b22075edd41a0c093337bd487d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 0}
+  scenefader: {fileID: 0}
+  menuSceneName: MainMenu

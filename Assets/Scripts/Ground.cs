@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Ground : MonoBehaviour
 {
 
+    //I need this turret to be dynamically selected from the shop GetSelectedTurrent()
     public GameObject turret;
 
 
@@ -12,6 +14,9 @@ public class Ground : MonoBehaviour
 	{
         if (Input.GetMouseButtonDown(0))
 		{
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             PlaceOnGround();
 		}
 	}
